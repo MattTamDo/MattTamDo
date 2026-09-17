@@ -9,7 +9,7 @@ Hi, I'm **Thanh Tam Do**. I'm an undergraduate Computer Science student at the U
 - B.S. in Computer Science & Mathematics - University of Houston *(Expected Dec 2027)*
 - Hackathon winner - Rice Datathon 2026 & HackHCC 2026
 - Currently building a real estate media SaaS serving 80+ clients across Texas
-- Reach me at **[thanhtamdo912005@gmail.com](mailto:thanhtamdo912005@gmail.com)** · [LinkedIn](https://www.linkedin.com/in/tam-do91/) · [GitHub](https://github.com/dothanhtam91)
+- Reach me at **[thanhtamdo912005@gmail.com](mailto:thanhtamdo912005@gmail.com)** · [LinkedIn](https://www.linkedin.com/in/tam-do91/) · [GitHub](https://github.com/MattTamDo)
 
 ---
 
@@ -90,7 +90,7 @@ Hi, I'm **Thanh Tam Do**. I'm an undergraduate Computer Science student at the U
 
 ## GitHub Activity
 
-Live contribution stats from [my GitHub profile](https://github.com/dothanhtam91). These cards refresh from GitHub API data nightly.
+Live contribution stats from [my GitHub profile](https://github.com/MattTamDo). These cards refresh from GitHub API data nightly.
 
 <p align="center">
   <img height="195" src="profile/streak.svg" alt="GitHub Streak" />
@@ -98,5 +98,11 @@ Live contribution stats from [my GitHub profile](https://github.com/dothanhtam91
 </p>
 
 <p align="center">
-  <img width="98%" src="profile/activity.svg" alt="Contribution activity graph" />
+  <img width="49%" src="profile/repos-per-language.svg" alt="Repos per language" />
+  <img width="49%" src="profile/most-commit-language.svg" alt="Most commit language" />
+</p>
+
+<p align="center">
+  <img width="49%" src="profile/profile-details.svg" alt="Profile details" />
+  <img width="49%" src="profile/productive-time.svg" alt="Productive time" />
 </p>

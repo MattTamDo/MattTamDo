@@ -23,18 +23,27 @@ jobs:
           USERNAME: ${{ github.repository_owner }}
         run: |
           mkdir -p profile
-          curl -fsSL "https://streak-stats.demolab.com/?user=${USERNAME}&theme=tokyonight&hide_border=true" -o profile/streak.svg
-          curl -fsSL "https://github-profile-summary-cards.vercel.app/api/cards/stats?username=${USERNAME}&theme=tokyonight" -o profile/stats.svg
-          curl -fsSL "https://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=${USERNAME}&theme=tokyonight" -o profile/repos-per-language.svg
-          curl -fsSL "https://github-profile-summary-cards.vercel.app/api/cards/most-commit-language?username=${USERNAME}&theme=tokyonight" -o profile/most-commit-language.svg
-          curl -fsSL "https://github-readme-activity-graph.vercel.app/graph?username=${USERNAME}&theme=tokyo-night&hide_border=true&area=true" -o profile/activity.svg
-          python3 - <<'PY'
-          from pathlib import Path
-          p = Path("profile/activity.svg")
-          text = p.read_text()
-          if "<svg" in text:
-              p.write_text(text[text.index("<svg"):])
-          PY
+          download() {
+            local url="$1"
+            local out="$2"
+            if curl -fsSL --retry 3 --retry-delay 2 "$url" -o "$out.tmp"; then
+              if grep -q "<svg" "$out.tmp"; then
+                mv "$out.tmp" "$out"
+                echo "updated $out"
+                return 0
+              fi
+            fi
+            rm -f "$out.tmp"
+            echo "skipped $out (source unavailable)"
+            return 0
+          }
+
+          download "https://streak-stats.demolab.com/?user=${USERNAME}&theme=tokyonight&hide_border=true" profile/streak.svg
+          download "https://github-profile-summary-cards.vercel.app/api/cards/stats?username=${USERNAME}&theme=tokyonight" profile/stats.svg
+          download "https://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=${USERNAME}&theme=tokyonight" profile/repos-per-language.svg
+          download "https://github-profile-summary-cards.vercel.app/api/cards/most-commit-language?username=${USERNAME}&theme=tokyonight" profile/most-commit-language.svg
+          download "https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=${USERNAME}&theme=tokyonight" profile/profile-details.svg
+          download "https://github-profile-summary-cards.vercel.app/api/cards/productive-time?username=${USERNAME}&theme=tokyonight" profile/productive-time.svg
 
       - name: Commit cards
         run: |
